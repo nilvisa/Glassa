@@ -1,23 +1,23 @@
-﻿@model List<Database.Models.Glass>
+﻿@model System.Collections.Generic.List<Glassa.Models.Glass>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tasted";
 }
 
-<h2>Index</h2>
+<h2>Tasted</h2>
 
 @if (!String.IsNullOrEmpty(ViewBag.Message))
 {
     <span>@ViewBag.Message</span>
 }
-      
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@foreach (var item in Model) 
+@foreach (var item in Model)
 {
-   <div id="glass">
+    <div id="glass">
         <h2>
             @Html.DisplayFor(modelItem => item.Name)
         </h2>
@@ -37,21 +37,21 @@
         <p>@Html.DisplayFor(modelItem => item.Price):-</p>
 
         @Html.DisplayFor(modelItem => item.Tasted)
-     
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
 
 
-        @using (Html.BeginForm("Index", "Glass", FormMethod.Post))
+        @using (Html.BeginForm())
         {
             @Html.HiddenFor(model => item.ID)
             @Html.EditorFor(model => item.Tasted)
             <input type="submit" value="Ätit" class="btn btn-default" />
         }
-        
 
-</div>    
+
+    </div>
 }
 
 <div style="clear: both;"></div>

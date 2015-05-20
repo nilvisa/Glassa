@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Database;
+using Database.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,6 +9,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Glassa.Models;
+using System.IO;
 
 namespace Glassa.Controllers
 {
@@ -46,12 +49,31 @@ namespace Glassa.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Price,Maker,Picture,Tasted")] Glass glass)
+        public ActionResult Create([Bind(Include = "ID,Name,Price,Maker,Picture,Tasted")] Glass glass, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
+                var path = String.Empty;
+                if (imageFile != null && imageFile.ContentLength > 0)
+                {
+                    var fileName = glass.Name + "_" + Path.GetFileName(imageFile.FileName);
+                    var filePath = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+
+                    try
+                    {
+                        imageFile.SaveAs(filePath);
+                        path = String.Format("/Content/Images/{0}", fileName);
+                    }
+                    catch(Exception e)
+                    { }
+
+                    glass.Picture = path;
+                }
+
                 db.Glassar.Add(glass);
                 db.SaveChanges();
+
+                ViewBag.Message = "Glassen lades till!";
                 return RedirectToAction("Index");
             }
 
@@ -84,6 +106,25 @@ namespace Glassa.Controllers
             {
                 db.Entry(glass).State = EntityState.Modified;
                 db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(glass);
+        }
+
+        public ActionResult Tasted()
+        {
+            return View(db.Glassar.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Tasted([Bind(Include = "ID, Tasted")] Glass glass)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(glass).State = EntityState.Modified;
+                db.SaveChanges();
+
+                ViewBag.Message = "NOM";
                 return RedirectToAction("Index");
             }
             return View(glass);

@@ -165,17 +165,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505190744445_InitialCreate.cs" />
-    <Compile Include="Migrations\201505190744445_InitialCreate.Designer.cs">
-      <DependentUpon>201505190744445_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505190933230_Required.cs" />
-    <Compile Include="Migrations\201505190933230_Required.Designer.cs">
-      <DependentUpon>201505190933230_Required.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Glass.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -202,7 +192,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -242,9 +234,11 @@
     <Content Include="Views\Glass\Details.cshtml" />
     <Content Include="Views\Glass\Edit.cshtml" />
     <Content Include="Views\Glass\Index.cshtml" />
+    <Content Include="Views\Glass\Tasted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -254,12 +248,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505190744445_InitialCreate.resx">
-      <DependentUpon>201505190744445_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505190933230_Required.resx">
-      <DependentUpon>201505190933230_Required.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{3fd54fbb-f2bd-40d5-b273-d5538e0d15a1}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace Glassa.Models
+namespace Database.Models
 {
     public class Glass
     {
@@ -19,10 +19,5 @@ namespace Glassa.Models
         public string Maker { get; set; }
         public string Picture { get; set; }
         public bool Tasted { get; set; }
-    }
-
-    public class GlassDBContext : DbContext
-    {
-        public DbSet<Glass> Glassar { get; set; }
-    }
+    }    
 }
