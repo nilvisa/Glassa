@@ -20,6 +20,9 @@ namespace Glassa.Controllers
         // GET: Glass
         public ActionResult Index()
         {
+            ViewBag.all = db.Glassar.Count();
+            ViewBag.tasted = db.Glassar.Count(g => g.Tasted == true);
+
             return View(db.Glassar.ToList());
         }
 
@@ -111,24 +114,20 @@ namespace Glassa.Controllers
             return View(glass);
         }
 
-        public ActionResult Tasted()
-        {
-            return View(db.Glassar.ToList());
-        }
 
         [HttpPost]
-        public ActionResult Tasted([Bind(Include = "ID, Tasted")] Glass glass)
+        [ValidateAntiForgeryToken]
+        public ActionResult Tasted(int id)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(glass).State = EntityState.Modified;
-                db.SaveChanges();
+            Glass glass = db.Glassar.Find(id);
+            if (glass.Tasted == false) glass.Tasted = true;
+            else glass.Tasted = false;
+            db.SaveChanges();
 
-                ViewBag.Message = "NOM";
-                return RedirectToAction("Index");
-            }
-            return View(glass);
+            return RedirectToAction("Index");
         }
+
+    
 
         // GET: Glass/Delete/5
         public ActionResult Delete(int? id)

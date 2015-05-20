@@ -1,10 +1,10 @@
 ﻿@model List<Database.Models.Glass>
 
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
 @if (!String.IsNullOrEmpty(ViewBag.Message))
 {
@@ -14,6 +14,8 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<p>Du har ätit @ViewBag.tasted av @ViewBag.all glassar!</p>
 
 @foreach (var item in Model) 
 {
@@ -27,11 +29,11 @@
 
         @if (!String.IsNullOrEmpty(item.Picture))
         {
-            <img src="@Html.DisplayFor(modelItem => item.Picture)" alt="IMAGES" height="200" />
+            <img src="@Html.DisplayFor(modelItem => item.Picture)" alt="IMAGE" height="200" />
         }
         else
         {
-            <img src="~/Content/Images/default.png" alt="IMAGES" height="200" />
+            <img src="~/Content/Images/default.png" alt="IMAGE" height="200" />
         }
 
         <p>@Html.DisplayFor(modelItem => item.Price):-</p>
@@ -39,15 +41,16 @@
         @Html.DisplayFor(modelItem => item.Tasted)
      
             @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            
             @Html.ActionLink("Delete", "Delete", new { id = item.ID })
 
 
-        @using (Html.BeginForm("Index", "Glass", FormMethod.Post))
-        {
-            @Html.HiddenFor(model => item.ID)
-            @Html.EditorFor(model => item.Tasted)
-            <input type="submit" value="Ätit" class="btn btn-default" />
+        @using (Html.BeginForm("Tasted", "Glass", new { id = item.ID }))
+        {   
+            @Html.AntiForgeryToken()
+            <div class="form-actions no-color">
+                <input type="submit" value="Tasted" class="btn btn-default" />
+            </div>
         }
         
 

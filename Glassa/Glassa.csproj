@@ -234,7 +234,6 @@
     <Content Include="Views\Glass\Details.cshtml" />
     <Content Include="Views\Glass\Edit.cshtml" />
     <Content Include="Views\Glass\Index.cshtml" />
-    <Content Include="Views\Glass\Tasted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
