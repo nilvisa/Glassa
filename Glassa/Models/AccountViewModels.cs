@@ -6,10 +6,6 @@ namespace Glassa.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Username")]
-        public string UserName { get; set; }
-
-        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -53,8 +49,7 @@ namespace Glassa.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
+        [Display(Name = "Username")]       
         public string Email { get; set; }
 
         [Required]

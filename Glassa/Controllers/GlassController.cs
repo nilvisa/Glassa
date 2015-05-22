@@ -44,6 +44,11 @@ namespace Glassa.Controllers
         // GET: Glass/Create
         public ActionResult Create()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index");
+            }  
+ 
             return View();
         }
 
@@ -86,10 +91,15 @@ namespace Glassa.Controllers
         // GET: Glass/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index");
+            }  
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Glass glass = db.Glassar.Find(id);
             if (glass == null)
             {
@@ -132,6 +142,10 @@ namespace Glassa.Controllers
         // GET: Glass/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index");
+            }  
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

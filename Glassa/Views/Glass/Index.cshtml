@@ -11,9 +11,11 @@
     <span>@ViewBag.Message</span>
 }
       
-<p>
+@if (Request.IsAuthenticated)
+        {<p>
     @Html.ActionLink("Create New", "Create")
 </p>
+}
 
 @if (ViewBag.all == ViewBag.tasted)
 {
@@ -30,10 +32,6 @@ else
         <p>Du har testat @ViewBag.tasted av din @ViewBag.all glass!</p>
     }
 }
-
-
-
- 
     
     
 
@@ -58,21 +56,22 @@ else
 
         <p>@Html.DisplayFor(modelItem => item.Price):-</p>
 
-        @Html.DisplayFor(modelItem => item.Tasted)
-     
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            
+        @if (Request.IsAuthenticated)
+        {
+            @Html.DisplayFor(modelItem => item.Tasted)
+
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID })
             @Html.ActionLink("Delete", "Delete", new { id = item.ID })
 
 
-        @using (Html.BeginForm("Tasted", "Glass", new { id = item.ID }))
-        {   
-            @Html.AntiForgeryToken()
-            <div class="form-actions no-color">
-                <input type="submit" value="Tasted" class="btn btn-default" />
-            </div>
-        }
-        
+            using (Html.BeginForm("Tasted", "Glass", new { id = item.ID }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <input type="submit" value="Tasted" class="btn btn-default" />
+                </div>
+            }  
+        }  
 
 </div>    
 }

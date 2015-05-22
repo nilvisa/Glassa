@@ -181,6 +181,10 @@
     <Compile Include="Migrations\201505221038149_username3.Designer.cs">
       <DependentUpon>201505221038149_username3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505221139417_drop username.cs" />
+    <Compile Include="Migrations\201505221139417_drop username.Designer.cs">
+      <DependentUpon>201505221139417_drop username.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -281,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505221038149_username3.resx">
       <DependentUpon>201505221038149_username3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505221139417_drop username.resx">
+      <DependentUpon>201505221139417_drop username.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
