@@ -15,7 +15,27 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<p>Du har ätit @ViewBag.tasted av @ViewBag.all glassar!</p>
+@if (ViewBag.all == ViewBag.tasted)
+{
+    <h2>Mission Accomplished!! Du har testat alla dina @ViewBag.all glassar!! </h2>
+}
+else
+{
+    if (ViewBag.all > 1)
+    {
+        <p>Du har testat @ViewBag.tasted av dina @ViewBag.all glassar!</p>
+    }
+    else
+    {
+        <p>Du har testat @ViewBag.tasted av din @ViewBag.all glass!</p>
+    }
+}
+
+
+
+ 
+    
+    
 
 @foreach (var item in Model) 
 {

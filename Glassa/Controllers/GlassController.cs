@@ -22,8 +22,8 @@ namespace Glassa.Controllers
         {
             ViewBag.all = db.Glassar.Count();
             ViewBag.tasted = db.Glassar.Count(g => g.Tasted == true);
-
-            return View(db.Glassar.ToList());
+            
+            return View(db.Glassar.OrderByDescending(g => g.ID).ToList());
         }
 
         // GET: Glass/Details/5

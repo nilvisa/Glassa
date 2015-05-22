@@ -165,6 +165,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505202022024_InitialCreate.cs" />
+    <Compile Include="Migrations\201505202022024_InitialCreate.Designer.cs">
+      <DependentUpon>201505202022024_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505221024349_username.cs" />
+    <Compile Include="Migrations\201505221024349_username.Designer.cs">
+      <DependentUpon>201505221024349_username.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505221030401_username2.cs" />
+    <Compile Include="Migrations\201505221030401_username2.Designer.cs">
+      <DependentUpon>201505221030401_username2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505221038149_username3.cs" />
+    <Compile Include="Migrations\201505221038149_username3.Designer.cs">
+      <DependentUpon>201505221038149_username3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -251,6 +268,20 @@
       <Project>{3fd54fbb-f2bd-40d5-b273-d5538e0d15a1}</Project>
       <Name>Database</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201505202022024_InitialCreate.resx">
+      <DependentUpon>201505202022024_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505221024349_username.resx">
+      <DependentUpon>201505221024349_username.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505221030401_username2.resx">
+      <DependentUpon>201505221030401_username2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505221038149_username3.resx">
+      <DependentUpon>201505221038149_username3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
