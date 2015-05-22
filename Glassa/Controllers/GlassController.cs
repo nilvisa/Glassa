@@ -61,23 +61,7 @@ namespace Glassa.Controllers
         {
             if (ModelState.IsValid)
             {
-                var path = String.Empty;
-                if (imageFile != null && imageFile.ContentLength > 0)
-                {
-                    var fileName = glass.Name + "_" + Path.GetFileName(imageFile.FileName);
-                    var filePath = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
-
-                    try
-                    {
-                        imageFile.SaveAs(filePath);
-                        path = String.Format("/Content/Images/{0}", fileName);
-                    }
-                    catch(Exception e)
-                    { }
-
-                    glass.Picture = path;
-                }
-
+                Picture(glass, imageFile);
                 db.Glassar.Add(glass);
                 db.SaveChanges();
 
@@ -113,11 +97,13 @@ namespace Glassa.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Price,Maker,Picture,Tasted")] Glass glass)
+        public ActionResult Edit([Bind(Include = "ID,Name,Price,Maker,Picture,Tasted")] Glass glass, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(glass).State = EntityState.Modified;
+                Picture(glass, imageFile);
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -135,6 +121,26 @@ namespace Glassa.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        public void Picture(Glass glass, HttpPostedFileBase imageFile)
+        {
+            var path = String.Empty;
+            if (imageFile != null && imageFile.ContentLength > 0)
+            {
+                var fileName = glass.Name + "_" + Path.GetFileName(imageFile.FileName);
+                var filePath = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+
+                try
+                {
+                    imageFile.SaveAs(filePath);
+                    path = String.Format("/Content/Images/{0}", fileName);
+                }
+                catch (Exception e)
+                { }
+
+               glass.Picture = path;
+            }
         }
 
     
