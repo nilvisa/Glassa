@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #d2ffa0
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -23,11 +24,31 @@ textarea {
     max-width: 280px;
 }
 
+h1{
+    font-family: 'Cooper Std';
+}
+
+h2{
+    font-family: 'Cooper Std';
+}
+
+h3{
+    font-family: 'Cooper Std';
+}
+
 #glass {
     width: 250px;
-    background: #cacacc;
+    background: #fff;
     float: left;
     text-align: center;
-    margin: 20px;
+    margin: 15px;
     padding: 15px;
+}
+    #glass img {
+        padding-bottom: 20px;
+        height: 200px;
+    }
+
+.tasted{
+    opacity: 0.4;
 }

@@ -12,9 +12,10 @@
 }
       
 @if (Request.IsAuthenticated)
-        {<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 }
 
 @if (ViewBag.all == ViewBag.tasted)
@@ -25,55 +26,52 @@ else
 {
     if (ViewBag.all > 1)
     {
-        <p>Du har testat @ViewBag.tasted av dina @ViewBag.all glassar!</p>
+        <h3>Du har testat @ViewBag.tasted av dina @ViewBag.all glassar!</h3>
     }
     else
     {
-        <p>Du har testat @ViewBag.tasted av din @ViewBag.all glass!</p>
+        <h3>Du har testat @ViewBag.tasted av din @ViewBag.all glass!</h3>
     }
 }
-    
-    
+       
 
 @foreach (var item in Model) 
 {
-   <div id="glass">
+    <div id="glass">
         <h2>
             @Html.DisplayFor(modelItem => item.Name)
         </h2>
         <h3>
-            @Html.DisplayFor(modelItem => item.Maker)
+            @Html.DisplayFor(modelItem => item.Maker) / @Html.DisplayFor(modelItem => item.Price):-
         </h3>
-
+    
         @if (!String.IsNullOrEmpty(item.Picture))
         {
-            <img src="@Html.DisplayFor(modelItem => item.Picture)" alt="IMAGE" height="200" />
+            <img src="@Html.DisplayFor(modelItem => item.Picture)" alt="IMAGE" />
         }
         else
         {
-            <img src="~/Content/Images/default.png" alt="IMAGE" height="200" />
+            <img src="~/Content/Images/default.png" alt="IMAGE" />
         }
-
-        <p>@Html.DisplayFor(modelItem => item.Price):-</p>
-
+  
+       
         @if (Request.IsAuthenticated)
         {
-            @Html.DisplayFor(modelItem => item.Tasted)
-
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID })
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-
-
             using (Html.BeginForm("Tasted", "Glass", new { id = item.ID }))
             {
                 @Html.AntiForgeryToken()
-                <div class="form-actions no-color">
-                    <input type="submit" value="Tasted" class="btn btn-default" />
-                </div>
-            }  
-        }  
+            
+               
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Testat" class="btn btn-default" />
+                    </div>
+              
+            }
 
-</div>    
+            <p>@Html.ActionLink("Edit", "Edit", new { id = item.ID }) | @Html.ActionLink("Delete", "Delete", new { id = item.ID })</p>
+        }
+
+    </div>    
 }
 
 <div style="clear: both;"></div>
