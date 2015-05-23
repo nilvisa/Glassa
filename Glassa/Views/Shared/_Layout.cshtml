@@ -18,15 +18,19 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Glassa", "Index", "Glass", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
+            
             <div class="navbar-collapse collapse">
+                           
                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        
+        <br /><br /><br /><br />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>

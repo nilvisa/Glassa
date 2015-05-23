@@ -24,16 +24,56 @@ textarea {
     max-width: 280px;
 }
 
-h1{
+h1 {
     font-family: 'Cooper Std';
 }
 
-h2{
+h2 {
     font-family: 'Cooper Std';
+    color: #f53173;
 }
 
-h3{
+h3 {
     font-family: 'Cooper Std';
+    text-align: center;
+}
+
+p {
+    color: #000;
+}
+
+a {
+    color: #7b2a93;
+}
+    a:hover {
+        color: #7b2a93;
+    }
+
+.navbar-inverse {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.navbar-inverse .navbar-brand {
+    font-family: 'Cooper Std';
+    font-size: 30px; 
+    padding: 10px 0px 0px 15px;
+    margin: 10px; 
+    color: #29f7f1;
+}
+     .navbar-inverse .navbar-brand:hover {
+        color: #000;
+     }
+
+.navbar-inverse .navbar-nav li a {
+    color: #000;
+}
+    .navbar-inverse .navbar-nav li a:hover {
+        color: #29f7f1;
+    }
+
+#status {
+    text-align: center;
 }
 
 #glass {
@@ -49,6 +89,39 @@ h3{
         height: 200px;
     }
 
-.tasted{
-    opacity: 0.4;
+#text {
+    width: 400px;
 }
+
+#tasted-check {
+    position: relative;
+    top: -200px;
+    height: 0px;
+}
+
+.btn-default {
+    background-color: #fef7b1;
+    color: #f53173;
+    border-color: #f53173;
+}
+    .btn-default:hover {
+        background-color: #fef280;
+        color: #f53173;
+        border-color: #f53173;
+    }
+    .btn-default:active {
+        background-color: #fef280;
+        color: #d40c4f;
+        border-color: #d40c4f;
+    }
+
+.btn-no {
+    background-color: #fff;
+    color: #ebbfce;
+    border-color: #ebbfce;
+}
+    .btn-no:hover {
+        background-color: #fff;
+        color: #f53173;
+        border-color: #ebbfce;
+    }

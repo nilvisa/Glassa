@@ -13,8 +13,8 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Glass</h4>
-        <hr />
+      
+ 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
 
@@ -42,22 +42,23 @@
             </div>
         </div>
         
-        <div class="form-group">
+        <div class="form-group">          
 
-            @if (!String.IsNullOrEmpty(Model.Picture))
-            {
-                <img src="@Html.DisplayFor(model => model.Picture)" alt="IMAGE" height="100" />
-            }
-            else
-            {
-                <img src="~/Content/Images/default.png" alt="IMAGE" height="100" />
-            }
+            @Html.LabelFor(model => model.Picture, htmlAttributes: new { @class = "control-label col-md-2" })
 
-            @Html.LabelFor(model => model.Picture)
             <div class="col-md-10">
                 <input type="file" name="imageFile" />
                 @Html.HiddenFor(model => model.Picture)
             </div>
+
+            @if (!String.IsNullOrEmpty(Model.Picture))
+            {
+                <img src="@Html.DisplayFor(model => model.Picture)" alt="IMAGE" class="control-label col-md-2" />
+            }
+            else
+            {
+                <img src="~/Content/Images/default.png" alt="IMAGE" class="control-label col-md-2" />
+            }
         </div>
 
         <div class="form-group">

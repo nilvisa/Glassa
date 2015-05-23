@@ -10,29 +10,25 @@
 {
     <span>@ViewBag.Message</span>
 }
-      
-@if (Request.IsAuthenticated)
-{
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-}
 
-@if (ViewBag.all == ViewBag.tasted)
-{
-    <h2>Mission Accomplished!! Du har testat alla dina @ViewBag.all glassar!! </h2>
-}
-else
-{
-    if (ViewBag.all > 1)
+<div id="status">
+    @if (ViewBag.all == ViewBag.tasted)
     {
-        <h3>Du har testat @ViewBag.tasted av dina @ViewBag.all glassar!</h3>
+        <h2>Mission Accomplished!!</h2>
+        <h2>Du har testat alla dina @ViewBag.all glassar!! </h2>
     }
     else
     {
-        <h3>Du har testat @ViewBag.tasted av din @ViewBag.all glass!</h3>
+        if (ViewBag.all > 1)
+        {
+            <h3>Du har testat @ViewBag.tasted av dina @ViewBag.all glassar!</h3>
+        }
+        else
+        {
+            <h3>Du har testat @ViewBag.tasted av din @ViewBag.all glass!</h3>
+        }
     }
-}
+</div>  
        
 
 @foreach (var item in Model) 
@@ -54,8 +50,12 @@ else
             <img src="~/Content/Images/default.png" alt="IMAGE" />
         }
 
-        <p>Testat? @Html.DisplayFor(modelItem => item.Tasted)</p>
-  
+        @if (item.Tasted)
+        {
+            <div id="tasted-check"><img src="~/Content/Images/tasted.png" /></div>
+        }
+
+          
        
         @if (Request.IsAuthenticated)
         {
@@ -65,13 +65,22 @@ else
             
                
                     <div class="form-actions no-color">
-                        <input type="submit" value="Testat" class="btn btn-default" />
+                    @if (item.Tasted)
+                    {
+                        <input type="submit" value="Uncheck" class="btn btn-no" />
+                    }
+                    else
+                    {
+                        <input type="submit" value="Check!" class="btn btn-default" />
+                    }
                     </div>
               
             }
-
-            <p>@Html.ActionLink("Edit", "Edit", new { id = item.ID }) | @Html.ActionLink("Delete", "Delete", new { id = item.ID })</p>
+            <br />
+            <p>@Html.ActionLink("Ändra", "Edit", new { id = item.ID }) | @Html.ActionLink("Ta bort", "Delete", new { id = item.ID })</p>
         }
+                
+     
 
     </div>    
 }
