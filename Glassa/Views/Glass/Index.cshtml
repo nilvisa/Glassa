@@ -12,22 +12,30 @@
 }
 
 <div id="status">
-    @if (ViewBag.all == ViewBag.tasted)
+    @if (ViewBag.all > 0)
     {
-        <h2>Mission Accomplished!!</h2>
-        <h2>Du har testat alla dina @ViewBag.all glassar!! </h2>
-    }
-    else
-    {
-        if (ViewBag.all > 1)
+        if (ViewBag.all == ViewBag.tasted)
         {
-            <h3>Du har testat @ViewBag.tasted av dina @ViewBag.all glassar!</h3>
+            <h2>Mission Accomplished!!</h2>
+            <h2>Du har testat alla dina @ViewBag.all glassar!! </h2>
         }
         else
         {
-            <h3>Du har testat @ViewBag.tasted av din @ViewBag.all glass!</h3>
+            if (ViewBag.all > 1)
+            {
+                <h3>Du har testat @ViewBag.tasted av dina @ViewBag.all glassar!</h3>
+            }
+            else
+            {
+                <h3>Du har testat @ViewBag.tasted av din @ViewBag.all glass!</h3>
+            }
         }
     }
+    else
+    {
+        <h3>Lägg till glassar!</h3>
+    }
+   
 </div>  
        
 

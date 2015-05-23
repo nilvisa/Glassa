@@ -24,18 +24,15 @@ textarea {
     max-width: 280px;
 }
 
-h1 {
-    font-family: 'Cooper Std';
-}
-
 h2 {
     font-family: 'Cooper Std';
+    font-size: 25px;
     color: #f53173;
 }
 
 h3 {
     font-family: 'Cooper Std';
-    text-align: center;
+    font-size: 20px;
 }
 
 p {
@@ -85,8 +82,11 @@ a {
     padding: 15px;
 }
     #glass img {
-        padding-bottom: 20px;
+        margin-bottom: 20px;
         height: 200px;
+    }
+    #glass h2 {
+        height: 75px;
     }
 
 #text {
@@ -95,7 +95,7 @@ a {
 
 #tasted-check {
     position: relative;
-    top: -200px;
+    top: -230px;
     height: 0px;
 }
 
